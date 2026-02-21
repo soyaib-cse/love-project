@@ -27,22 +27,51 @@
             margin: auto;
         }
 
-        img {
-            width: 250px;
-            border-radius: 20px;
-            margin: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        /* Heart container for images */
+        .heart-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
         }
 
-        .heart {
-            font-size: 30px;
-            animation: beat 1s infinite;
+        .heart-shape {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Heart_corazon.svg/1024px-Heart_corazon.svg.png') no-repeat center;
+            background-size: contain;
+            z-index: 1;
         }
 
-        @keyframes beat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+        .love-images {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .love-images img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .love-text {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            z-index: 2;
         }
 
         button {
@@ -65,7 +94,6 @@
 
 <div class="container">
     <h1>Happy Valentine’s Day ❤️</h1>
-    <div class="heart">💖</div>
 
     <p>
         To the most beautiful person in my life…<br>
@@ -73,11 +101,15 @@
         Thank you for being in my world 💕
     </p>
 
-    <!-- তোমার ছবি এখানে বসাও -->
-    <img src="photo1.jpg" alt="Our Memory">
-    <img src="photo2.jpg" alt="Our Memory">
-
-    <br>
+    <!-- Heart with 2 images inside -->
+    <div class="heart-container">
+        <div class="heart-shape"></div>
+        <div class="love-images">
+            <img src="photo1.jpg" alt="My Love">
+            <img src="photo2.jpg" alt="My Love">
+        </div>
+        <div class="love-text">I Love You ❤️</div>
+    </div>
 
     <button onclick="alert('I Love You Forever ❤️')">
         Click Me 🙂
