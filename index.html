@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>For My Love ❤️</title>
+
 <style>
 body {
     margin: 0;
@@ -14,71 +15,67 @@ body {
 }
 
 .container {
-    padding: 50px 20px;
+    padding: 40px 20px;
 }
 
-h1 { font-size: 40px; }
-
-p {
-    font-size: 20px;
-    max-width: 600px;
-    margin: auto;
-}
-
-/* Heart shape container */
-.heart-container {
+/* REAL HEART SHAPE */
+.heart {
     position: relative;
     width: 300px;
-    height: 300px;
-    margin: 30px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 270px;
+    margin: 40px auto;
+    background: red;
+    transform: rotate(-45deg);
     overflow: hidden;
-    clip-path: polygon(
-        50% 0%, 
-        61% 5%, 
-        70% 15%, 
-        75% 25%, 
-        80% 40%, 
-        50% 100%, 
-        20% 40%, 
-        25% 25%, 
-        30% 15%, 
-        39% 5%
-    );
-    background-color: #ff4d6d;
 }
 
-.heart-bg {
+.heart:before,
+.heart:after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 270px;
+    background: red;
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -150px;
+    left: 0;
+}
+
+.heart:after {
+    left: 150px;
+    top: 0;
+}
+
+/* IMAGE HOLDER */
+.heart-images {
     position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
+    transform: rotate(45deg);
 }
 
-.heart-bg img {
+.heart-images img {
     width: 50%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Love text */
+/* TEXT */
 .love-text {
     position: absolute;
+    width: 100%;
+    top: 40%;
+    transform: rotate(45deg);
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     display: none;
 }
 
-/* File inputs */
-input[type="file"] {
-    margin-top: 20px;
-    font-size: 16px;
-}
-
+/* BUTTON */
 button {
     padding: 12px 25px;
     font-size: 18px;
@@ -89,71 +86,57 @@ button {
     cursor: pointer;
     margin-top: 20px;
 }
-
-button:hover {
-    background: #ffe0e6;
-}
 </style>
 </head>
+
 <body>
 
 <div class="container">
-<h1>Happy Valentine’s Day ❤️</h1>
+    <h1>Happy Valentine’s Day ❤️</h1>
 
-<p>
-To the most beautiful person in my life…<br>
-You are my happiness, my peace, my everything.  
-Thank you for being in my world 💕
-</p>
+    <div class="heart">
+        <div class="heart-images">
+            <img id="img1" style="display:none;">
+            <img id="img2" style="display:none;">
+        </div>
 
-<!-- Heart container -->
-<div class="heart-container">
-    <div class="heart-bg">
-        <img id="img1" src="" style="display:none;">
-        <img id="img2" src="" style="display:none;">
+        <div class="love-text" id="loveText">
+            I Love You ❤️
+        </div>
     </div>
-    <div class="love-text" id="loveText">I Love You ❤️</div>
-</div>
 
-<!-- File inputs -->
-<div>
-<label>Choose first picture: </label>
-<input type="file" id="file1" accept="image/*"><br><br>
+    <input type="file" id="file1" accept="image/*"><br><br>
+    <input type="file" id="file2" accept="image/*"><br>
 
-<label>Choose second picture: </label>
-<input type="file" id="file2" accept="image/*">
-</div>
-
-<button id="showLove">Click Me 🙂</button>
+    <button id="btn">Click Me 🙂</button>
 </div>
 
 <script>
-const file1 = document.getElementById('file1');
-const file2 = document.getElementById('file2');
-const img1 = document.getElementById('img1');
-const img2 = document.getElementById('img2');
-const loveText = document.getElementById('loveText');
-const button = document.getElementById('showLove');
+const file1 = document.getElementById("file1");
+const file2 = document.getElementById("file2");
+const img1 = document.getElementById("img1");
+const img2 = document.getElementById("img2");
+const loveText = document.getElementById("loveText");
 
-file1.addEventListener('change', function(e) {
+file1.onchange = e => {
     const file = e.target.files[0];
     if(file){
         img1.src = URL.createObjectURL(file);
-        img1.style.display = 'block';
+        img1.style.display = "block";
     }
-});
+};
 
-file2.addEventListener('change', function(e) {
+file2.onchange = e => {
     const file = e.target.files[0];
     if(file){
         img2.src = URL.createObjectURL(file);
-        img2.style.display = 'block';
+        img2.style.display = "block";
     }
-});
+};
 
-button.addEventListener('click', function(){
-    loveText.style.display = 'block';
-});
+document.getElementById("btn").onclick = () => {
+    loveText.style.display = "block";
+};
 </script>
 
 </body>
