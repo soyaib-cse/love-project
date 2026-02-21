@@ -27,40 +27,33 @@
             margin: auto;
         }
 
-        /* Heart container for images */
+        /* Heart container */
         .heart-container {
             position: relative;
             width: 300px;
             height: 300px;
             margin: 30px auto;
-        }
-
-        .heart-shape {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Heart_corazon.svg/1024px-Heart_corazon.svg.png') no-repeat center;
-            background-size: contain;
-            z-index: 1;
+            clip-path: polygon(
+                50% 0%, 61% 5%, 70% 15%, 75% 25%, 80% 40%, 
+                50% 100%, 20% 40%, 25% 25%, 30% 15%, 39% 5%
+            );
+            background: #ff4d6d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
         .love-images {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            z-index: 2;
+            width: 90%;
+            height: 90%;
         }
 
         .love-images img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .love-text {
@@ -71,7 +64,12 @@
             font-size: 22px;
             font-weight: bold;
             color: #fff;
-            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        input[type="file"] {
+            margin-top: 20px;
+            font-size: 16px;
         }
 
         button {
@@ -101,20 +99,51 @@
         Thank you for being in my world 💕
     </p>
 
-    <!-- Heart with 2 images inside -->
+    <!-- Heart container with 2 side-by-side images -->
     <div class="heart-container">
-        <div class="heart-shape"></div>
         <div class="love-images">
-            <img src="photo1.jpg" alt="My Love">
-            <img src="photo2.jpg" alt="My Love">
+            <img id="img1" src="" alt="My Love" style="display:none;">
+            <img id="img2" src="" alt="My Love" style="display:none;">
         </div>
         <div class="love-text">I Love You ❤️</div>
+    </div>
+
+    <!-- File inputs for user to choose pictures -->
+    <div>
+        <label>Choose first picture: </label>
+        <input type="file" id="file1" accept="image/*"><br><br>
+
+        <label>Choose second picture: </label>
+        <input type="file" id="file2" accept="image/*">
     </div>
 
     <button onclick="alert('I Love You Forever ❤️')">
         Click Me 🙂
     </button>
 </div>
+
+<script>
+    const file1 = document.getElementById('file1');
+    const file2 = document.getElementById('file2');
+    const img1 = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
+
+    file1.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if(file) {
+            img1.src = URL.createObjectURL(file);
+            img1.style.display = 'block';
+        }
+    });
+
+    file2.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if(file) {
+            img2.src = URL.createObjectURL(file);
+            img2.style.display = 'block';
+        }
+    });
+</script>
 
 </body>
 </html>
