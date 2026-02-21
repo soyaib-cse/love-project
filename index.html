@@ -13,59 +13,42 @@ body{
     color:white;
 }
 
-/* HEART */
-.heart{
-    position: relative;
-    width: 220px;
-    height: 220px;
-    margin: 60px auto;
-    transform: rotate(-45deg);
-    background: red;
-    overflow: hidden;
+.heart-wrapper{
+    width:260px;
+    margin:40px auto;
+    position:relative;
 }
 
-.heart:before,
-.heart:after{
-    content:'';
-    position:absolute;
-    width:220px;
-    height:220px;
-    background:red;
-    border-radius:50%;
+svg{
+    width:100%;
+    height:auto;
+    display:block;
 }
 
-.heart:before{
-    top:-110px;
-    left:0;
-}
-
-.heart:after{
-    left:110px;
-    top:0;
-}
-
-/* IMAGE HOLDER */
+/* IMAGE INSIDE HEART */
 .images{
     position:absolute;
-    width:100%;
-    height:100%;
+    top:35px;
+    left:30px;
+    width:200px;
+    height:180px;
     display:flex;
-    transform: rotate(45deg);
+    overflow:hidden;
+    border-radius:20px;
 }
 
-/* IMPORTANT FIX */
 .images img{
     width:50%;
     height:100%;
-    object-fit: cover;
+    object-fit:cover;
+    display:none;
 }
 
 /* TEXT */
 .text{
     position:absolute;
+    top:90px;
     width:100%;
-    top:40%;
-    transform: rotate(45deg);
     font-size:20px;
     font-weight:bold;
     display:none;
@@ -85,12 +68,24 @@ button{
 
 <h1>Happy Valentine ❤️</h1>
 
-<div class="heart">
+<div class="heart-wrapper">
+
+    <!-- PERFECT HEART SVG -->
+    <svg viewBox="0 0 512 512">
+        <path fill="red"
+        d="M471.7 73.8c-54.5-46.4-136-38.3-186.6 13.7L256 117.6l-29.1-30.1
+        C176.3 35.5 94.8 27.4 40.3 73.8c-62.8 53.5-66.1 149.8-9.9 207.1
+        l193.5 199.8c18.8 19.4 49.3 19.4 68.2 0l193.5-199.8
+        c56.2-57.3 52.9-153.6-9.9-207.1z"/>
+    </svg>
+
     <div class="images">
         <img id="img1">
         <img id="img2">
     </div>
+
     <div class="text" id="loveText">I Love You ❤️</div>
+
 </div>
 
 <input type="file" id="file1"><br><br>
@@ -101,9 +96,6 @@ button{
 <script>
 const img1 = document.getElementById('img1');
 const img2 = document.getElementById('img2');
-
-img1.style.display = "none";
-img2.style.display = "none";
 
 document.getElementById('file1').onchange = e=>{
     const file = e.target.files[0];
