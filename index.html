@@ -2,141 +2,120 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For My Love ❤️</title>
+<title>Love</title>
 
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    font-family: Arial, sans-serif;
-    text-align: center;
-    color: white;
+body{
+    margin:0;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    text-align:center;
+    font-family: Arial;
+    color:white;
 }
 
-.container {
-    padding: 40px 20px;
-}
-
-/* REAL HEART SHAPE */
-.heart {
+/* PERFECT HEART */
+.heart{
     position: relative;
-    width: 300px;
-    height: 270px;
-    margin: 40px auto;
+    width: 200px;
+    height: 200px;
     background: red;
+    margin: 60px auto;
     transform: rotate(-45deg);
-    overflow: hidden;
 }
 
 .heart:before,
-.heart:after {
-    content: "";
-    position: absolute;
-    width: 300px;
-    height: 270px;
-    background: red;
-    border-radius: 50%;
+.heart:after{
+    content:'';
+    position:absolute;
+    width:200px;
+    height:200px;
+    background:red;
+    border-radius:50%;
 }
 
-.heart:before {
-    top: -150px;
-    left: 0;
+.heart:before{
+    top:-100px;
+    left:0;
 }
 
-.heart:after {
-    left: 150px;
-    top: 0;
+.heart:after{
+    left:100px;
+    top:0;
 }
 
-/* IMAGE HOLDER */
-.heart-images {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
+/* IMAGES INSIDE HEART */
+.images{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
     transform: rotate(45deg);
+    overflow:hidden;
 }
 
-.heart-images img {
-    width: 50%;
-    height: 100%;
-    object-fit: cover;
+.images img{
+    width:50%;
+    height:100%;
+    object-fit:cover;
 }
 
 /* TEXT */
-.love-text {
-    position: absolute;
-    width: 100%;
-    top: 40%;
+.text{
+    position:absolute;
+    width:100%;
+    top:40%;
     transform: rotate(45deg);
-    font-size: 24px;
-    font-weight: bold;
-    display: none;
+    font-size:20px;
+    font-weight:bold;
+    display:none;
 }
 
-/* BUTTON */
-button {
-    padding: 12px 25px;
-    font-size: 18px;
-    border: none;
-    border-radius: 25px;
-    background: white;
-    color: #ff4d6d;
-    cursor: pointer;
-    margin-top: 20px;
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    font-size:16px;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Happy Valentine’s Day ❤️</h1>
+<h1>Happy Valentine ❤️</h1>
 
-    <div class="heart">
-        <div class="heart-images">
-            <img id="img1" style="display:none;">
-            <img id="img2" style="display:none;">
-        </div>
-
-        <div class="love-text" id="loveText">
-            I Love You ❤️
-        </div>
+<div class="heart">
+    <div class="images">
+        <img id="img1" style="display:none;">
+        <img id="img2" style="display:none;">
     </div>
-
-    <input type="file" id="file1" accept="image/*"><br><br>
-    <input type="file" id="file2" accept="image/*"><br>
-
-    <button id="btn">Click Me 🙂</button>
+    <div class="text" id="loveText">I Love You ❤️</div>
 </div>
 
+<input type="file" id="file1"><br><br>
+<input type="file" id="file2"><br><br>
+
+<button onclick="showLove()">Click Me 🙂</button>
+
 <script>
-const file1 = document.getElementById("file1");
-const file2 = document.getElementById("file2");
-const img1 = document.getElementById("img1");
-const img2 = document.getElementById("img2");
-const loveText = document.getElementById("loveText");
+const img1 = document.getElementById('img1');
+const img2 = document.getElementById('img2');
 
-file1.onchange = e => {
+document.getElementById('file1').onchange = e=>{
     const file = e.target.files[0];
-    if(file){
-        img1.src = URL.createObjectURL(file);
-        img1.style.display = "block";
-    }
+    img1.src = URL.createObjectURL(file);
+    img1.style.display='block';
 };
 
-file2.onchange = e => {
+document.getElementById('file2').onchange = e=>{
     const file = e.target.files[0];
-    if(file){
-        img2.src = URL.createObjectURL(file);
-        img2.style.display = "block";
-    }
+    img2.src = URL.createObjectURL(file);
+    img2.style.display='block';
 };
 
-document.getElementById("btn").onclick = () => {
-    loveText.style.display = "block";
-};
+function showLove(){
+    document.getElementById('loveText').style.display='block';
+}
 </script>
 
 </body>
