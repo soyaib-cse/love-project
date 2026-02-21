@@ -34,8 +34,16 @@
             height: 300px;
             margin: 30px auto;
             clip-path: polygon(
-                50% 0%, 61% 5%, 70% 15%, 75% 25%, 80% 40%, 
-                50% 100%, 20% 40%, 25% 25%, 30% 15%, 39% 5%
+                50% 0%, 
+                61% 5%, 
+                70% 15%, 
+                75% 25%, 
+                80% 40%, 
+                50% 100%, 
+                20% 40%, 
+                25% 25%, 
+                30% 15%, 
+                39% 5%
             );
             background: #ff4d6d;
             display: flex;
@@ -48,23 +56,26 @@
             display: flex;
             width: 90%;
             height: 90%;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
         }
 
         .love-images img {
-            width: 50%;
+            width: 48%;
             height: 100%;
             object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid white;
         }
 
         .love-text {
             position: absolute;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: bold;
             color: #fff;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            display: none; /* Initially hidden */
         }
 
         input[type="file"] {
@@ -99,16 +110,16 @@
         Thank you for being in my world 💕
     </p>
 
-    <!-- Heart container with 2 side-by-side images -->
-    <div class="heart-container">
+    <!-- Heart container -->
+    <div class="heart-container" id="heart">
         <div class="love-images">
             <img id="img1" src="" alt="My Love" style="display:none;">
             <img id="img2" src="" alt="My Love" style="display:none;">
         </div>
-        <div class="love-text">I Love You ❤️</div>
+        <div class="love-text" id="loveText">I Love You ❤️</div>
     </div>
 
-    <!-- File inputs for user to choose pictures -->
+    <!-- File inputs -->
     <div>
         <label>Choose first picture: </label>
         <input type="file" id="file1" accept="image/*"><br><br>
@@ -117,9 +128,7 @@
         <input type="file" id="file2" accept="image/*">
     </div>
 
-    <button onclick="alert('I Love You Forever ❤️')">
-        Click Me 🙂
-    </button>
+    <button id="showLove">Click Me 🙂</button>
 </div>
 
 <script>
@@ -127,6 +136,8 @@
     const file2 = document.getElementById('file2');
     const img1 = document.getElementById('img1');
     const img2 = document.getElementById('img2');
+    const loveText = document.getElementById('loveText');
+    const button = document.getElementById('showLove');
 
     file1.addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -142,6 +153,10 @@
             img2.src = URL.createObjectURL(file);
             img2.style.display = 'block';
         }
+    });
+
+    button.addEventListener('click', function() {
+        loveText.style.display = 'block';
     });
 </script>
 
